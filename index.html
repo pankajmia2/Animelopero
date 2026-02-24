@@ -1,0 +1,93 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+export default function AnimeLoperoWebsite() {
+  return (
+    <div className="min-h-screen bg-black text-white font-sans">
+      {/* Hero Section */}
+      <section className="text-center py-20 px-6 bg-gradient-to-b from-black to-gray-900">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-bold text-orange-500"
+        >
+          Anime Lopero
+        </motion.h1>
+        <p className="mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+          Latest Anime News, Honest Reviews, and Hindi Dub Updates. Stay ahead in the anime world.
+        </p>
+        <Button className="mt-8 rounded-2xl px-6 py-3 text-lg">
+          Explore Now
+        </Button>
+      </section>
+
+      {/* Latest News Section */}
+      <section className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-10 text-orange-400">Latest Anime News</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[1, 2, 3].map((item) => (
+            <Card key={item} className="bg-gray-900 rounded-2xl shadow-lg">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-4">Upcoming Hindi Dub Announcement</h3>
+                <p className="text-gray-400 mb-4">
+                  Get the latest updates about new Hindi dub anime releasing soon.
+                </p>
+                <Button variant="outline" className="rounded-2xl">Read More</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section className="py-16 px-6 bg-gray-950">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-semibold mb-10 text-orange-400">Featured Reviews</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-gray-900 rounded-2xl shadow-lg">
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold mb-4">Anime Review Title</h3>
+                <p className="text-gray-400 mb-4">Rating: 8.5/10</p>
+                <p className="text-gray-400">
+                  Honest review covering story, animation, voice acting, and Hindi dub quality.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gray-900 rounded-2xl shadow-lg">
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-semibold mb-4">Anime Review Title</h3>
+                <p className="text-gray-400 mb-4">Rating: 9/10</p>
+                <p className="text-gray-400">
+                  Detailed breakdown with pros, cons, and final recommendation.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* YouTube Section */}
+      <section className="py-16 px-6 max-w-6xl mx-auto text-center">
+        <h2 className="text-3xl font-semibold mb-10 text-orange-400">Latest YouTube Videos</h2>
+        <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg">
+          <iframe
+            className="w-full h-full"
+            src="https://www.youtube.com/embed?listType=user_uploads&list=YOUR_CHANNEL_NAME"
+            title="YouTube videos"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black text-center py-8 text-gray-500">
+        © {new Date().getFullYear()} Anime Lopero. All rights reserved.
+      </footer>
+    </div>
+  );
+}
