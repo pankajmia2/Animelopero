@@ -4,21 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anime Lopero - Hindi Dub Hub</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Roboto,sans-serif;
-background:#141519;
-color:#fff;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:#111;color:#fff}
 
 /* NAVBAR */
 nav{
@@ -26,134 +16,139 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 40px;
-background:#0f0f12;
-border-bottom:1px solid #222;
+background:#0d0d0f;
 position:sticky;
 top:0;
 z-index:1000;
+border-bottom:1px solid #222;
 }
 
 .logo{
-font-size:22px;
 font-weight:700;
-color:#f47521;
+font-size:20px;
+color:#ff7a18;
 }
 
-nav input{
-background:#1c1d22;
+.search{
+background:#1a1a1f;
 border:none;
 padding:8px 15px;
 color:#fff;
 border-radius:4px;
-width:220px;
+width:250px;
 }
 
 /* HERO */
 .hero{
-height:60vh;
-background:url('https://images.unsplash.com/photo-1601933470928-c8d0e3a1a5a7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+padding:60px 40px;
+background:#18181c;
+}
+
+.hero h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.hero p{
+color:#aaa;
+}
+
+/* FILTERS */
+.filters{
+padding:20px 40px;
 display:flex;
-align-items:center;
-padding:60px;
+gap:10px;
+flex-wrap:wrap;
 }
 
-.hero-content{
-background:rgba(0,0,0,0.6);
-padding:30px;
-max-width:500px;
-border-radius:8px;
-}
-
-.hero-content h1{
-font-size:34px;
-margin-bottom:15px;
-}
-
-.hero-content p{
-color:#ccc;
-margin-bottom:20px;
-}
-
-.btn{
-background:#f47521;
+.filters button{
+background:#1a1a1f;
+border:1px solid #333;
 color:#fff;
-padding:10px 20px;
-border:none;
+padding:6px 14px;
 cursor:pointer;
 border-radius:4px;
-font-weight:500;
+font-size:13px;
 }
 
-.section{
+.filters button:hover{
+background:#ff7a18;
+border-color:#ff7a18;
+}
+
+/* GRID */
+.grid{
 padding:30px 40px;
-}
-
-.section h2{
-margin-bottom:15px;
-font-size:20px;
-}
-
-/* HORIZONTAL SCROLL ROW */
-.row{
-display:flex;
-gap:15px;
-overflow-x:auto;
-scroll-behavior:smooth;
-padding-bottom:10px;
-}
-
-.row::-webkit-scrollbar{
-height:6px;
-}
-
-.row::-webkit-scrollbar-thumb{
-background:#333;
-border-radius:10px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:20px;
 }
 
 .card{
-min-width:160px;
-background:#1c1d22;
+background:#1a1a1f;
 border-radius:6px;
 overflow:hidden;
 cursor:pointer;
 transition:.2s;
-position:relative;
 }
 
 .card img{
 width:100%;
-height:220px;
+height:250px;
 object-fit:cover;
 }
 
-.card p{
-padding:8px;
-font-size:13px;
+.card h3{
+padding:10px;
+font-size:14px;
 }
 
 .card:hover{
-transform:scale(1.08);
+transform:scale(1.05);
 }
 
-/* Hindi Dub Badge */
-.badge{
-position:absolute;
-top:8px;
-left:8px;
-background:#f47521;
-font-size:10px;
-padding:3px 6px;
-border-radius:3px;
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:2000;
 }
 
-/* FOOTER */
+.modal-content{
+background:#1a1a1f;
+padding:30px;
+max-width:500px;
+width:90%;
+border-radius:8px;
+}
+
+.modal-content h2{
+margin-bottom:10px;
+}
+
+.modal-content p{
+color:#aaa;
+margin-bottom:15px;
+}
+
+.close{
+cursor:pointer;
+float:right;
+font-size:20px;
+}
+
 footer{
 text-align:center;
 padding:30px;
-background:#0f0f12;
+background:#0d0d0f;
 color:#777;
-font-size:13px;
 margin-top:40px;
 }
 </style>
@@ -163,80 +158,94 @@ margin-top:40px;
 
 <nav>
 <div class="logo">Anime Lopero</div>
-<input type="text" placeholder="Search Hindi Dub Anime...">
+<input class="search" type="text" placeholder="Search anime..." onkeyup="searchAnime()">
 </nav>
 
 <section class="hero">
-<div class="hero-content">
-<h1>Complete Hindi Dub Anime Collection</h1>
-<p>Browse platform-wise Hindi dubbed anime and stay updated.</p>
-<button class="btn">Explore Now</button>
-</div>
+<h1>Complete Hindi Dub Anime Directory</h1>
+<p>Browse by platform and explore detailed info instantly.</p>
 </section>
 
-<!-- NETFLIX SECTION -->
-<section class="section">
-<h2>Netflix Hindi Dub</h2>
-<div class="row">
-
-<div class="card">
-<span class="badge">Hindi Dub</span>
-<img src="https://via.placeholder.com/300x400">
-<p>Demon Slayer</p>
-</div>
-
-<div class="card">
-<span class="badge">Hindi Dub</span>
-<img src="https://via.placeholder.com/300x400">
-<p>Naruto</p>
-</div>
-
-<div class="card">
-<span class="badge">Hindi Dub</span>
-<img src="https://via.placeholder.com/300x400">
-<p>One Piece</p>
-</div>
-
-</div>
+<section class="filters">
+<button onclick="filterPlatform('all')">All</button>
+<button onclick="filterPlatform('Netflix')">Netflix</button>
+<button onclick="filterPlatform('Crunchyroll')">Crunchyroll</button>
+<button onclick="filterPlatform('Disney+')">Disney+</button>
 </section>
 
-<!-- CRUNCHYROLL SECTION -->
-<section class="section">
-<h2>Crunchyroll Hindi Dub</h2>
-<div class="row">
+<section class="grid" id="animeGrid"></section>
 
-<div class="card">
-<span class="badge">Hindi Dub</span>
-<img src="https://via.placeholder.com/300x400">
-<p>Jujutsu Kaisen</p>
+<div class="modal" id="animeModal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">✖</span>
+<h2 id="modalTitle"></h2>
+<p id="modalPlatform"></p>
+<p>Hindi Dub Available</p>
 </div>
-
-<div class="card">
-<span class="badge">Hindi Dub</span>
-<img src="https://via.placeholder.com/300x400">
-<p>Solo Leveling</p>
 </div>
-
-</div>
-</section>
-
-<!-- DISNEY+ SECTION -->
-<section class="section">
-<h2>Disney+ Hindi Dub</h2>
-<div class="row">
-
-<div class="card">
-<span class="badge">Hindi Dub</span>
-<img src="https://via.placeholder.com/300x400">
-<p>Tokyo Revengers</p>
-</div>
-
-</div>
-</section>
 
 <footer>
-© 2026 Anime Lopero | Hindi Dub Anime Portal
+© 2026 Anime Lopero | Hindi Dub Archive
 </footer>
+
+<script>
+
+/* ======= ADD ALL ANIME HERE ======= */
+
+const animeList = [
+{title:"Naruto", platform:"Netflix", img:"https://via.placeholder.com/300x400"},
+{title:"Demon Slayer", platform:"Netflix", img:"https://via.placeholder.com/300x400"},
+{title:"One Piece", platform:"Netflix", img:"https://via.placeholder.com/300x400"},
+{title:"Jujutsu Kaisen", platform:"Crunchyroll", img:"https://via.placeholder.com/300x400"},
+{title:"Solo Leveling", platform:"Crunchyroll", img:"https://via.placeholder.com/300x400"},
+{title:"Tokyo Revengers", platform:"Disney+", img:"https://via.placeholder.com/300x400"}
+];
+
+/* RENDER */
+function renderAnime(list){
+const grid=document.getElementById("animeGrid");
+grid.innerHTML="";
+list.forEach(anime=>{
+grid.innerHTML+=`
+<div class="card" onclick="openModal('${anime.title}','${anime.platform}')">
+<img src="${anime.img}">
+<h3>${anime.title}</h3>
+</div>
+`;
+});
+}
+
+renderAnime(animeList);
+
+/* SEARCH */
+function searchAnime(){
+const input=document.querySelector(".search").value.toLowerCase();
+const filtered=animeList.filter(a=>a.title.toLowerCase().includes(input));
+renderAnime(filtered);
+}
+
+/* FILTER */
+function filterPlatform(platform){
+if(platform==="all"){
+renderAnime(animeList);
+}else{
+const filtered=animeList.filter(a=>a.platform===platform);
+renderAnime(filtered);
+}
+}
+
+/* MODAL */
+function openModal(title,platform){
+document.getElementById("modalTitle").innerText=title;
+document.getElementById("modalPlatform").innerText="Platform: "+platform;
+document.getElementById("animeModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("animeModal").style.display="none";
+}
+
+</script>
 
 </body>
 </html>
