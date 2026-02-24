@@ -1,359 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Lopero News</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime News | Latest Updates</title>
+    <style>
+        :root {
+            --bg-dark: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --accent-red: #e62429; /* CBR style red */
+            --text-light: #ffffff;
+            --text-muted: #aaaaaa;
+        }
 
-<meta name="description" content="Latest Anime News, Hindi Dub Updates and Reviews.">
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        /* Header / Navbar */
+        header {
+            background-color: #000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-red);
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Inter,sans-serif;background:#f4f4f4;color:#111}
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-/* HEADER */
-header{
-background:#111;
-color:#fff;
-padding:20px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-}
+        .logo span { color: var(--accent-red); }
 
-.logo{font-size:22px;font-weight:700}
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
 
-nav{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-}
+        nav a:hover { color: var(--accent-red); }
 
-nav button{
-background:none;
-border:none;
-color:#ccc;
-cursor:pointer;
-font-size:14px;
-}
+        /* Main Layout Grid */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
 
-nav button:hover{color:#fff}
+        /* Responsive Breakpoint */
+        @media (max-width: 850px) {
+            .container { grid-template-columns: 1fr; }
+        }
 
-.search{
-background:#222;
-border:none;
-color:#fff;
-padding:6px 12px;
-border-radius:4px;
-}
+        /* Featured Article (Top Left) */
+        .featured-article {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
 
-/* LAYOUT */
-.container{
-display:grid;
-grid-template-columns:3fr 1fr;
-gap:30px;
-padding:40px;
-}
+        .featured-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--accent-red);
+        }
 
-.featured{
-background:#fff;
-border-radius:6px;
-overflow:hidden;
-margin-bottom:30px;
-cursor:pointer;
-}
+        .featured-content {
+            padding: 20px;
+        }
 
-.featured img{
-width:100%;
-height:350px;
-object-fit:cover;
-}
+        .category-tag {
+            background-color: var(--accent-red);
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
 
-.featured-content{
-padding:20px;
-}
+        .headline {
+            font-size: 28px;
+            margin: 10px 0;
+            line-height: 1.2;
+        }
 
-.featured h1{
-font-family:Georgia,serif;
-font-size:26px;
-margin-bottom:10px;
-}
+        .headline a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-gap:20px;
-}
+        .headline a:hover { color: var(--accent-red); }
 
-.card{
-background:#fff;
-border-radius:6px;
-overflow:hidden;
-cursor:pointer;
-transition:.2s;
-}
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
 
-.card-content{
-padding:15px;
-}
+        .news-card:hover { transform: translateY(-5px); }
 
-.card h3{
-font-family:Georgia,serif;
-font-size:16px;
-margin-bottom:8px;
-}
+        .card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
 
-.card p{
-font-size:13px;
-color:#666;
-}
+        .card-content { padding: 15px; }
+        
+        .card-title {
+            font-size: 16px;
+            margin: 10px 0 0 0;
+            line-height: 1.4;
+        }
 
-.card:hover{transform:translateY(-5px)}
+        /* Sidebar (Right) */
+        .sidebar {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+        }
 
-.sidebar{
-background:#fff;
-padding:20px;
-border-radius:6px;
-height:fit-content;
-}
+        .sidebar-title {
+            font-size: 18px;
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 10px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
 
-.sidebar h2{margin-bottom:15px}
+        .trending-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
 
-.trending-item{
-margin-bottom:10px;
-font-size:14px;
-cursor:pointer;
-}
+        .trending-num {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--accent-red);
+        }
 
-.trending-item:hover{color:#e60023}
-
-.pagination{
-margin-top:30px;
-text-align:center;
-}
-
-.pagination button{
-padding:5px 10px;
-margin:2px;
-border:1px solid #ccc;
-background:#fff;
-cursor:pointer;
-}
-
-footer{
-background:#111;
-color:#ccc;
-text-align:center;
-padding:30px;
-margin-top:40px;
-font-size:13px;
-}
-
-/* MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
-z-index:2000;
-}
-
-.modal-content{
-background:#fff;
-padding:30px;
-max-width:700px;
-width:90%;
-border-radius:6px;
-max-height:80vh;
-overflow-y:auto;
-}
-
-.close{
-float:right;
-cursor:pointer;
-font-size:18px;
-}
-
-@media(max-width:900px){
-.container{grid-template-columns:1fr}
-}
-</style>
+        .trending-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<div class="logo">Anime Lopero News</div>
+    <header>
+        <div class="logo">Anime<span>Lopero</span></div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Hindi Dubs</a>
+            <a href="#">Reviews</a>
+            <a href="#">Trending</a>
+        </nav>
+    </header>
 
-<nav>
-<button onclick="filterCategory('All')">All</button>
-<button onclick="filterCategory('Anime News')">Anime News</button>
-<button onclick="filterCategory('Hindi Dub')">Hindi Dub</button>
-<button onclick="filterCategory('Review')">Review</button>
-</nav>
+    <div class="container">
+        <main>
+            <article class="featured-article">
+                <img src="https://images.unsplash.com/photo-1580477667995-15f1a5477d9f?q=80&w=1000&auto=format&fit=crop" alt="Featured Anime" class="featured-img">
+                <div class="featured-content">
+                    <span class="category-tag">Hindi Dub News</span>
+                    <h1 class="headline"><a href="#">Attack on Titan Hindi Dub: Muse India vs Prime Video - Which is Actually Better?</a></h1>
+                    <p style="color: var(--text-muted);">The wait is over, but does the new dub live up to the hype? Here is a complete breakdown of the voice acting, script, and emotional delivery.</p>
+                </div>
+            </article>
 
-<input class="search" type="text" placeholder="Search..." onkeyup="searchArticles()">
-</header>
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500&auto=format&fit=crop" alt="News 1" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Update</span>
+                        <h2 class="card-title"><a href="#">Black Clover Season 2 Hindi Dub Release Date Finally Confirmed</a></h2>
+                    </div>
+                </article>
 
-<div class="container">
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1613376023733-7a974305a74b?q=80&w=500&auto=format&fit=crop" alt="News 2" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Streaming</span>
+                        <h2 class="card-title"><a href="#">Ne Zha 2 is Dropping on JioHotstar in Hindi – What You Need to Know</a></h2>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500&auto=format&fit=crop" alt="News 3" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Review</span>
+                        <h2 class="card-title"><a href="#">Terror in Resonance: Why This Masterpiece Needs Your Attention</a></h2>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <img src="https://images.unsplash.com/photo-1541562232579-512a21360020?q=80&w=500&auto=format&fit=crop" alt="News 4" class="card-img">
+                    <div class="card-content">
+                        <span class="category-tag">Review</span>
+                        <h2 class="card-title"><a href="#">Baki: The Most Insane Martial Arts Anime Ever Made?</a></h2>
+                    </div>
+                </article>
+            </div>
+        </main>
 
-<div>
-
-<div class="featured" id="featuredArticle"></div>
-
-<div class="grid" id="articleGrid"></div>
-
-<div class="pagination" id="pagination"></div>
-
-</div>
-
-<div class="sidebar">
-<h2>Trending</h2>
-<div id="trendingList"></div>
-</div>
-
-</div>
-
-<div class="modal" id="articleModal">
-<div class="modal-content">
-<span class="close" onclick="closeModal()">✖</span>
-<h2 id="modalTitle"></h2>
-<p id="modalContent"></p>
-</div>
-</div>
-
-<footer>
-© 2026 Anime Lopero News
-</footer>
-
-<script>
-
-/* ===== ADD YOUR ARTICLES HERE ===== */
-
-const articles = [
-{
-title:"Massive Hindi Dub Anime Announcement",
-category:"Hindi Dub",
-image:"https://via.placeholder.com/1000x600",
-content:"Several new anime titles are officially getting Hindi dubs this season."
-},
-{
-title:"Top 10 Trending Anime This Week",
-category:"Anime News",
-image:"https://via.placeholder.com/400x300",
-content:"These anime are dominating global charts right now."
-},
-{
-title:"Solo Leveling Review",
-category:"Review",
-image:"https://via.placeholder.com/400x300",
-content:"A detailed breakdown of story, animation and hype factor."
-}
-];
-
-/* ===== SYSTEM CODE BELOW ===== */
-
-let currentPage = 1;
-const perPage = 6;
-let filteredArticles = articles;
-
-function renderFeatured(){
-const featured = articles[0];
-document.getElementById("featuredArticle").innerHTML = `
-<img src="${featured.image}">
-<div class="featured-content">
-<h1 onclick="openModal('${featured.title}','${featured.content}')">${featured.title}</h1>
-</div>`;
-}
-
-function renderArticles(){
-const grid = document.getElementById("articleGrid");
-grid.innerHTML = "";
-
-const start = (currentPage-1)*perPage;
-const paginated = filteredArticles.slice(start,start+perPage);
-
-paginated.forEach(article=>{
-grid.innerHTML += `
-<div class="card" onclick="openModal('${article.title}','${article.content}')">
-<img src="${article.image}">
-<div class="card-content">
-<h3>${article.title}</h3>
-<p>${article.category}</p>
-</div>
-</div>`;
-});
-
-renderPagination();
-}
-
-function renderPagination(){
-const pageCount = Math.ceil(filteredArticles.length/perPage);
-const pagination = document.getElementById("pagination");
-pagination.innerHTML="";
-for(let i=1;i<=pageCount;i++){
-pagination.innerHTML+=`<button onclick="goToPage(${i})">${i}</button>`;
-}
-}
-
-function goToPage(page){
-currentPage=page;
-renderArticles();
-}
-
-function filterCategory(cat){
-if(cat==="All"){
-filteredArticles = articles;
-}else{
-filteredArticles = articles.filter(a=>a.category===cat);
-}
-currentPage=1;
-renderArticles();
-}
-
-function searchArticles(){
-const input=document.querySelector(".search").value.toLowerCase();
-filteredArticles = articles.filter(a=>a.title.toLowerCase().includes(input));
-currentPage=1;
-renderArticles();
-}
-
-function openModal(title,content){
-document.getElementById("modalTitle").innerText=title;
-document.getElementById("modalContent").innerText=content;
-document.getElementById("articleModal").style.display="flex";
-}
-
-function closeModal(){
-document.getElementById("articleModal").style.display="none";
-}
-
-function renderTrending(){
-const list=document.getElementById("trendingList");
-articles.slice(0,5).forEach(a=>{
-list.innerHTML+=`<div class="trending-item">${a.title}</div>`;
-});
-}
-
-renderFeatured();
-renderArticles();
-renderTrending();
-
-</script>
+        <aside class="sidebar">
+            <h3 class="sidebar-title">Trending Now</h3>
+            
+            <div class="trending-item">
+                <div class="trending-num">1</div>
+                <div class="trending-text">Crunchyroll Announces 5 New Hindi Dubs for Winter Season</div>
+            </div>
+            <div class="trending-item">
+                <div class="trending-num">2</div>
+                <div class="trending-text">Is Roll Over and Die Worth Watching? Complete Review</div>
+            </div>
+            <div class="trending-item">
+                <div class="trending-num">3</div>
+                <div class="trending-text">Top 10 High-Octane Action Anime Available in Hindi Right Now</div>
+            </div>
+            <div class="trending-item">
+                <div class="trending-num">4</div>
+                <div class="trending-text">MX Player Adds New Classic Anime to Their Free Catalog</div>
+            </div>
+        </aside>
+    </div>
 
 </body>
 </html>
