@@ -3,262 +3,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Lopero</title>
+<title>Anime Lopero - Hindi Dub Hub</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-body{font-family:Poppins,sans-serif;background:#000;color:#fff;overflow-x:hidden}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Roboto,sans-serif;
+background:#141519;
+color:#fff;
+}
 
 /* NAVBAR */
 nav{
-position:fixed;
-top:0;
-width:100%;
-padding:18px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.8);
-backdrop-filter:blur(10px);
-border-bottom:1px solid #00f7ff;
+padding:15px 40px;
+background:#0f0f12;
+border-bottom:1px solid #222;
+position:sticky;
+top:0;
 z-index:1000;
 }
 
-nav h1{
-font-family:Orbitron;
-color:#00f7ff;
-text-shadow:0 0 15px #00f7ff;
+.logo{
+font-size:22px;
+font-weight:700;
+color:#f47521;
 }
 
-nav ul{display:flex;gap:30px;list-style:none}
-nav a{text-decoration:none;color:#fff;transition:.3s}
-nav a:hover{color:#ff00c8;text-shadow:0 0 10px #ff00c8}
+nav input{
+background:#1c1d22;
+border:none;
+padding:8px 15px;
+color:#fff;
+border-radius:4px;
+width:220px;
+}
 
 /* HERO */
 .hero{
-height:100vh;
-background:radial-gradient(circle at center,#111122,#000);
+height:60vh;
+background:url('https://images.unsplash.com/photo-1601933470928-c8d0e3a1a5a7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-text-align:center;
-padding:20px;
+padding:60px;
 }
 
-.hero h2{
-font-family:Orbitron;
-font-size:55px;
-color:#ff00c8;
-animation:glow 2s infinite alternate;
+.hero-content{
+background:rgba(0,0,0,0.6);
+padding:30px;
+max-width:500px;
+border-radius:8px;
 }
 
-@keyframes glow{
-from{text-shadow:0 0 10px #ff00c8}
-to{text-shadow:0 0 30px #ff00c8}
+.hero-content h1{
+font-size:34px;
+margin-bottom:15px;
 }
 
-.hero p{margin:20px 0;max-width:600px;color:#ccc}
+.hero-content p{
+color:#ccc;
+margin-bottom:20px;
+}
 
 .btn{
-padding:12px 30px;
-border:2px solid #00f7ff;
-background:transparent;
-color:#00f7ff;
+background:#f47521;
+color:#fff;
+padding:10px 20px;
+border:none;
 cursor:pointer;
-transition:.3s;
+border-radius:4px;
+font-weight:500;
 }
 
-.btn:hover{
-background:#00f7ff;
-color:#000;
-box-shadow:0 0 25px #00f7ff;
+.section{
+padding:30px 40px;
 }
 
-/* STATS */
-.stats{
+.section h2{
+margin-bottom:15px;
+font-size:20px;
+}
+
+/* HORIZONTAL SCROLL ROW */
+.row{
 display:flex;
-justify-content:center;
-gap:60px;
-padding:80px 20px;
-background:#050510;
-text-align:center;
+gap:15px;
+overflow-x:auto;
+scroll-behavior:smooth;
+padding-bottom:10px;
 }
 
-.stat h3{
-font-size:40px;
-color:#00f7ff;
-font-family:Orbitron;
+.row::-webkit-scrollbar{
+height:6px;
 }
 
-.stat p{color:#aaa}
-
-/* BLOG */
-.section{padding:80px 40px;background:#000}
-.section h2{text-align:center;font-family:Orbitron;color:#00f7ff;margin-bottom:40px}
-
-.filter-buttons{
-text-align:center;
-margin-bottom:40px;
+.row::-webkit-scrollbar-thumb{
+background:#333;
+border-radius:10px;
 }
 
-.filter-buttons button{
-margin:5px;
-padding:8px 18px;
-border:1px solid #ff00c8;
-background:transparent;
-color:#ff00c8;
+.card{
+min-width:160px;
+background:#1c1d22;
+border-radius:6px;
+overflow:hidden;
 cursor:pointer;
-transition:.3s;
+transition:.2s;
+position:relative;
 }
 
-.filter-buttons button:hover{
-background:#ff00c8;
-color:#000;
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
 }
 
-.blog-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+.card p{
+padding:8px;
+font-size:13px;
 }
 
-.blog-card{
-background:#111122;
-padding:20px;
-border:1px solid #ff00c8;
-border-radius:12px;
-transition:.3s;
+.card:hover{
+transform:scale(1.08);
 }
 
-.blog-card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 20px #ff00c8;
-}
-
-/* YOUTUBE */
-.youtube{
-padding:80px 20px;
-text-align:center;
-background:#050510;
-}
-
-.youtube iframe{
-width:90%;
-max-width:800px;
-height:400px;
-border-radius:15px;
-border:2px solid #00f7ff;
-box-shadow:0 0 20px #00f7ff;
+/* Hindi Dub Badge */
+.badge{
+position:absolute;
+top:8px;
+left:8px;
+background:#f47521;
+font-size:10px;
+padding:3px 6px;
+border-radius:3px;
 }
 
 /* FOOTER */
 footer{
 text-align:center;
-padding:25px;
-background:#000;
-border-top:1px solid #00f7ff;
-color:#aaa;
+padding:30px;
+background:#0f0f12;
+color:#777;
+font-size:13px;
+margin-top:40px;
 }
-
 </style>
 </head>
 
 <body>
 
 <nav>
-<h1>Anime Lopero</h1>
-<ul>
-<li><a href="#">Home</a></li>
-<li><a href="#blog">News</a></li>
-<li><a href="#yt">YouTube</a></li>
-</ul>
+<div class="logo">Anime Lopero</div>
+<input type="text" placeholder="Search Hindi Dub Anime...">
 </nav>
 
 <section class="hero">
-<h2>India’s Neon Anime Hub</h2>
-<p>Hindi Dub Updates • Honest Reviews • Trending Anime News</p>
-<button class="btn">Explore</button>
-</section>
-
-<section class="stats">
-<div class="stat">
-<h3 id="animeCount">0</h3>
-<p>Anime Covered</p>
-</div>
-<div class="stat">
-<h3 id="subsCount">0</h3>
-<p>Subscribers</p>
-</div>
-<div class="stat">
-<h3 id="reviewsCount">0</h3>
-<p>Reviews Posted</p>
+<div class="hero-content">
+<h1>Complete Hindi Dub Anime Collection</h1>
+<p>Browse platform-wise Hindi dubbed anime and stay updated.</p>
+<button class="btn">Explore Now</button>
 </div>
 </section>
 
-<section id="blog" class="section">
-<h2>Latest News</h2>
+<!-- NETFLIX SECTION -->
+<section class="section">
+<h2>Netflix Hindi Dub</h2>
+<div class="row">
 
-<div class="filter-buttons">
-<button onclick="filterSelection('all')">All</button>
-<button onclick="filterSelection('dub')">Hindi Dub</button>
-<button onclick="filterSelection('review')">Reviews</button>
+<div class="card">
+<span class="badge">Hindi Dub</span>
+<img src="https://via.placeholder.com/300x400">
+<p>Demon Slayer</p>
 </div>
 
-<div class="blog-grid">
+<div class="card">
+<span class="badge">Hindi Dub</span>
+<img src="https://via.placeholder.com/300x400">
+<p>Naruto</p>
+</div>
 
-<div class="blog-card dub">New Hindi Dub Anime Released</div>
-<div class="blog-card review">Top Anime Review This Week</div>
-<div class="blog-card dub">Netflix Adds Hindi Dub Titles</div>
+<div class="card">
+<span class="badge">Hindi Dub</span>
+<img src="https://via.placeholder.com/300x400">
+<p>One Piece</p>
+</div>
 
 </div>
 </section>
 
-<section id="yt" class="youtube">
-<h2 style="color:#ff00c8;font-family:Orbitron;margin-bottom:30px;">Latest Video</h2>
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+<!-- CRUNCHYROLL SECTION -->
+<section class="section">
+<h2>Crunchyroll Hindi Dub</h2>
+<div class="row">
+
+<div class="card">
+<span class="badge">Hindi Dub</span>
+<img src="https://via.placeholder.com/300x400">
+<p>Jujutsu Kaisen</p>
+</div>
+
+<div class="card">
+<span class="badge">Hindi Dub</span>
+<img src="https://via.placeholder.com/300x400">
+<p>Solo Leveling</p>
+</div>
+
+</div>
+</section>
+
+<!-- DISNEY+ SECTION -->
+<section class="section">
+<h2>Disney+ Hindi Dub</h2>
+<div class="row">
+
+<div class="card">
+<span class="badge">Hindi Dub</span>
+<img src="https://via.placeholder.com/300x400">
+<p>Tokyo Revengers</p>
+</div>
+
+</div>
 </section>
 
 <footer>
-© 2026 Anime Lopero | Professional Neon Portal
+© 2026 Anime Lopero | Hindi Dub Anime Portal
 </footer>
-
-<script>
-
-/* COUNTER ANIMATION */
-function animateValue(id, start, end, duration) {
-let obj=document.getElementById(id);
-let range=end-start;
-let current=start;
-let increment=end>start?1:-1;
-let stepTime=Math.abs(Math.floor(duration/range));
-let timer=setInterval(function(){
-current+=increment;
-obj.textContent=current;
-if(current==end){
-clearInterval(timer);
-}
-},stepTime);
-}
-
-animateValue("animeCount",0,150,2000);
-animateValue("subsCount",0,50000,2000);
-animateValue("reviewsCount",0,80,2000);
-
-/* FILTER */
-function filterSelection(category){
-let cards=document.getElementsByClassName("blog-card");
-for(let i=0;i<cards.length;i++){
-cards[i].style.display="none";
-if(category=="all"||cards[i].classList.contains(category)){
-cards[i].style.display="block";
-}
-}
-}
-
-</script>
 
 </body>
 </html>
